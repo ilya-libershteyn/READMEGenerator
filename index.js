@@ -1,3 +1,5 @@
+const inquirer = require('inquirer');
+
 // array of questions for user
 const questions = [
     {
@@ -47,9 +49,25 @@ const questions = [
     }
 ];
 
+// function to call inquirer
+const promptUser = () => {
+    inq.prompt([questions])
+};
+
+const getFileName = () => {
+    return inq.prompt([
+        {
+            type: 'input',
+            name: 'fileName',
+            message: 'Enter a file name: '    
+        }
+    ]);
+};
+
 // function to write README file
 function writeToFile(fileName, data) {
-}
+    writeFileAsync(fileName + '.md', data);
+};
 
 // function to initialize program
 function init() {
