@@ -10,7 +10,7 @@
 ## Description  
 undefined  
 ## Installation  
-1. Extract all files  2. Navigate in terminal to the directory with extracted files  3. run 'npm i'  
+1. Extract all files, navigate in terminal to the directory with extracted files, then run 'npm i'.  
 ## Usage  
 In a terminal window, run 'node index.js' and respond to the prompts. Your Readme will be in the output folder.  
 ## License  

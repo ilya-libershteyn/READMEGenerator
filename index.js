@@ -67,7 +67,7 @@ const promptUser = () =>
 
 // function to write README file
 function writeToFile(fileName, data) {
-    writeFileAsync('./output/' + fileName + '.md', data);
+    writeFileAsync(fileName, data);
 };
 
 // function to initialize program
@@ -81,7 +81,7 @@ const init = async() =>
 
     writeToFile('./output/README.md', md);
 
-    console.log('Successfully wrote to ' + fileName + '.md');
+    console.log('Successfully wrote to \'./output/\' + fileName .md');
   } 
   catch(err) 
   {
