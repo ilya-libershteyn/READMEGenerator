@@ -1,4 +1,9 @@
-const inquirer = require('inquirer');
+const inq = require('inquirer');
+const fs = require('fs');
+const util = require('util');
+const generateMarkdown = require('./utils/generateMarkdown');
+
+const writeFileAsync = util.promisify(fs.writeFile);
 
 // array of questions for user
 const questions = [
@@ -14,11 +19,6 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'contents',
-        message: 'Enter a table of contents:',
-    },
-    {
-        type: 'input',
         name: 'install',
         message: 'Enter installation instrucitons:',
     },
@@ -31,31 +31,44 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Select License',
+        choices: ["Apache",
+                  "GNU",
+                  "MIT",
+                  "Perl",
+                  "Zlib"]
     },
     {
-        type: 'list',
+        type: 'input',
         name: 'contributing',
         message: 'List contributors',
     },
     {
-        type: 'list',
+        type: 'input',
         name: 'tests',
         message: 'Tests',
     },
     {
-        type: 'list',
-        name: 'questions',
-        message: 'Questions',
+        type: 'input',
+        name: 'username',
+        message: 'Please enter your Github user name: ',
+    }
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Please enter your email: ',
     }
 ];
 
 // function to call inquirer
-const promptUser = () => {
-    inq.prompt([questions])
+const promptUser = () => 
+{
+    return inq.prompt(questions);
 };
 
-const getFileName = () => {
-    return inq.prompt([
+const getFileName = () => 
+{
+    return inq.prompt(
+    [
         {
             type: 'input',
             name: 'fileName',
@@ -66,14 +79,29 @@ const getFileName = () => {
 
 // function to write README file
 function writeToFile(fileName, data) {
-    writeFileAsync(fileName + '.md', data);
+    writeFileAsync('./test/' + fileName + '.md', data);
 };
 
 // function to initialize program
-function init() {
-    const inq = require('inquirer');
-    const fs = require('fs');
-}
+const init = async() => 
+{
+  try 
+  {
+    const data = await promptUser();
+
+    const md = generateMarkdown(data);
+
+    const fileName = await getFileName();
+
+    writeToFile(fileName, md);
+
+    console.log('Successfully wrote to ' + filName + '.md');
+  } 
+  catch(err) 
+  {
+    console.log(err);
+  }
+};
 
 // function call to initialize program
 init();
