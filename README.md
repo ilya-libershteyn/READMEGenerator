@@ -20,6 +20,6 @@ Ilya Libershteyn
 ## Tests  
   
 ## Questions  
-undefined  
+Please enter any questions:   
 Find me on GitHub: [ilya-libershteyn](https://github.com/ilya-libershteyn)  
 Email me with any questions: ilya.v.libershteyn@gmail.com  
