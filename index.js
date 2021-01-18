@@ -65,21 +65,9 @@ const promptUser = () =>
     return inq.prompt(questions);
 };
 
-const getFileName = () => 
-{
-    return inq.prompt(
-    [
-        {
-            type: 'input',
-            name: 'fileName',
-            message: 'Enter a file name: '    
-        }
-    ]);
-};
-
 // function to write README file
 function writeToFile(fileName, data) {
-    writeFileAsync('./test/' + fileName + '.md', data);
+    writeFileAsync('./output/' + fileName + '.md', data);
 };
 
 // function to initialize program
@@ -91,11 +79,9 @@ const init = async() =>
 
     const md = generateMarkdown(data);
 
-    const fileName = await getFileName();
+    writeToFile('./output/README.md', md);
 
-    writeToFile(fileName, md);
-
-    console.log('Successfully wrote to ' + filName + '.md');
+    console.log('Successfully wrote to ' + fileName + '.md');
   } 
   catch(err) 
   {
