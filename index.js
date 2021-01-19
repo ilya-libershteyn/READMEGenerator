@@ -31,11 +31,11 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Select License',
-        choices: ["Apache",
-                  "GNU",
-                  "MIT",
-                  "Perl",
-                  "Zlib"]
+        choices: ['Apache',
+                  'GNU',
+                  'MIT',
+                  'Perl',
+                  'Zlib']
     },
     {
         type: 'input',
